@@ -42,20 +42,28 @@ Select Enter to run the code.
 
 * Create a new folder and clone the sample app repository to your Azure Cloud account
 
-  `mkdir source-code`  
-  `git clone https://github.com/shrivastavarashmi/SampleSpringBatchScheduler.git`
+  ```bash
+   mkdir source-code`  
+   git clone https://github.com/shrivastavarashmi/SampleSpringBatchScheduler.git
+  ``` 
 
 * Change directory to the project
 
-  `cd SampleSpringBatchScheduler`
+  ```bash
+   cd SampleSpringBatchScheduler
+  ``` 
 
 * Configure the maven plugin to [set up](https://docs.microsoft.com/en-us/azure/app-service/quickstart-java?tabs=javase&pivots=platform-linux-development-environment-maven#3---configure-the-maven-plugin) the App Service operating system, Java version, and Tomcat version using below command :
 
- `mvn com.microsoft.azure:azure-webapp-maven-plugin:2.5.0:config`
+  ```bash
+   mvn com.microsoft.azure:azure-webapp-maven-plugin:2.5.0:config
+  ```  
 
 * Build the project
  
-  `mvn clean package -DskipTests -Denv=cloud`
+  ```bash
+   mvn clean package -DskipTests -Denv=cloud
+  ```
 
 This will take a few minutes.
 
@@ -63,7 +71,9 @@ This will take a few minutes.
 
 Use below command to deploy project on App Service 
 
-  ``` mvn package azure-webapp:deploy```
+  ```bash
+    mvn package azure-webapp:deploy
+  ```
 
 # Verify Azure App Service
 
