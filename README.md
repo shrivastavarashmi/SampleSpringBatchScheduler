@@ -30,13 +30,13 @@ Or, you can use the Azure Cloud Shell. Azure hosts Azure Cloud Shell, an interac
 
 To run the code in this article in Azure Cloud Shell:
 
-Start Cloud Shell.
+* Start Cloud Shell.
 
-Select the Copy button on a code block to copy the code.
+* Select the Copy button on a code block to copy the code.
 
-Paste the code into the Cloud Shell session by selecting Ctrl+Shift+V on Windows and Linux or by selecting Cmd+Shift+V on macOS.
+* Paste the code into the Cloud Shell session by selecting Ctrl+Shift+V on Windows and Linux or by selecting Cmd+Shift+V on macOS.
 
-Select Enter to run the code.
+* Select Enter to run the code.
 
 # Clone and build the repo
 
@@ -58,6 +58,19 @@ Select Enter to run the code.
   ```bash
    mvn com.microsoft.azure:azure-webapp-maven-plugin:2.5.0:config
   ```  
+  
+* Note : Below two extra dependencies are added in the ```pom.xml``` of the batch application as App Service requires an http endpoint to be up for the instance to be reported as up and running. This can also be achieved by adding a welcome page or Rest endpoint.
+
+```bash
+  <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+   <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+```
 
 * Build the project
  
@@ -100,3 +113,6 @@ In the Azure portal, go to your web app.
 
 # Reference Links
 * [Create a Java app on Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/quickstart-java?tabs=javase&pivots=platform-linux-development-environment-maven)
+
+
+
