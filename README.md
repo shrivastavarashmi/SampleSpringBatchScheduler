@@ -64,7 +64,7 @@ In case a HTTP endpoint is not exposed by the deployed application, App Service 
 2022-07-21T07:53:38.718Z INFO  - Stopping site aaaaa because it failed during startup.
 ```
 
-The purpose of spring boot actuator here is to have a HTTP service (health check indicator in this case) exposed on port 80 which will indicate the App Service is up and running.
+The purpose of spring boot starter web and actuator here is to have a HTTP service (health check indicator in this case) exposed on port 80 which will indicate the App Service is up and running.
 
 # Clone and build the repo
 
