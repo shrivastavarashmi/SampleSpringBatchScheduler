@@ -5,7 +5,7 @@ This quickstart shows you how to deploy Spring Boot Batch application on App Ser
 * [Deploy Spring Boot apps on Azure App Service](https://github.com/shrivastavarashmi/SampleSpringBatchScheduler#deploy-spring-boot-batch-application-on-azure-app-service)
   * [What will you experience](https://github.com/shrivastavarashmi/SampleSpringBatchScheduler#what-will-you-experience)
   * [What will you need](https://github.com/shrivastavarashmi/SampleSpringBatchScheduler#what-will-you-need)
-  * [Additional requirement to run Spring Batch application on Azure App Service](https://github.com/shrivastavarashmi/SampleSpringBatchScheduler/edit/main/README.md#additional-requirement-to-run-spring-batch-application-on-azure-app-service)
+  * [Additional requirement to run Spring Batch application on Azure App Service](https://github.com/shrivastavarashmi/SampleSpringBatchScheduler#additional-requirement-to-run-spring-batch-application-on-azure-app-service)
   * [Clone and build the repo](https://github.com/shrivastavarashmi/SampleSpringBatchScheduler#clone-and-build-the-repo)
   * [Deploy the application](https://github.com/shrivastavarashmi/SampleSpringBatchScheduler#to-deploy-the-project-on-azure-cloud-shell)
   * [Verify the application](https://github.com/shrivastavarashmi/SampleSpringBatchScheduler#verify-azure-app-service)
