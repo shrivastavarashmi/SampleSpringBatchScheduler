@@ -41,7 +41,7 @@ To run the code in this article in Azure Cloud Shell:
 
 # Additional requirement to run Spring Batch application on Azure App Service
 
-Below extra dependency is added in the ```pom.xml``` of the existing batch application as App Service requires an http endpoint to be up for the instance to be reported as up and running. This can also be achieved by adding a welcome page or Rest endpoint.
+Below extra dependency is added in the ```pom.xml``` of the existing batch application as App Service requires an http endpoint to be up for the instance to be reported as up and running.
 
 ```bash
     <dependency>
