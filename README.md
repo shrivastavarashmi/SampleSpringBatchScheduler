@@ -41,14 +41,10 @@ To run the code in this article in Azure Cloud Shell:
 
 # Additional requirement to run Spring Batch application on Azure App Service
 
-Below two extra dependencies are added in the ```pom.xml``` of the existing batch application as App Service requires an http endpoint to be up for the instance to be reported as up and running. This can also be achieved by adding a welcome page or Rest endpoint.
+Below extra dependency is added in the ```pom.xml``` of the existing batch application as App Service requires an http endpoint to be up for the instance to be reported as up and running. This can also be achieved by adding a welcome page or Rest endpoint.
 
 ```bash
-  <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-actuator</artifactId>
-    </dependency>
-   <dependency>
+    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
@@ -64,7 +60,19 @@ In case a HTTP endpoint is not exposed by the deployed application, App Service 
 2022-07-21T07:53:38.718Z INFO  - Stopping site aaaaa because it failed during startup.
 ```
 
-The purpose of spring boot starter web and actuator here is to have a HTTP service (health check indicator in this case) exposed on port 80 which will indicate the App Service is up and running.
+The purpose of spring boot starter web here is to host a HTTP service (health check indicator in this case, see attached snippet below) exposed on port 80 which will indicate the App Service is up and running.
+
+```
+@RestController
+public class BatchController {
+
+    @GetMapping(value = "/")
+    public String getBatchHealth(){
+        return "Batch Service is UP!";
+    }
+}
+
+```
 
 # Clone and build the repo
 
