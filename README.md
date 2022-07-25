@@ -115,9 +115,9 @@ Use below command to deploy project on App Service
 
 Below information can be used to verify the application running on App Service :
 
-* Hit the health check url  `https://{appservicename}.azurewebsites.net/actuator/health` to see if your app service is up and running. It should display below json output :
+* Hit the health check url  `https://{appservicename}.azurewebsites.net/` to see if your app service is up and running. It should display below json output :
 
-``{"status":"UP"}``
+``Batch Service is UP!``
 
 * Check LogStream for logs as below :
 
