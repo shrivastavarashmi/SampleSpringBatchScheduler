@@ -5,6 +5,7 @@ This quickstart shows you how to deploy Spring Boot Batch application on App Ser
 * [Deploy Spring Boot apps on Azure App Service](https://github.com/shrivastavarashmi/SampleSpringBatchScheduler#deploy-spring-boot-batch-application-on-azure-app-service)
   * [What will you experience](https://github.com/shrivastavarashmi/SampleSpringBatchScheduler#what-will-you-experience)
   * [What will you need](https://github.com/shrivastavarashmi/SampleSpringBatchScheduler#what-will-you-need)
+  * [Additional requirement to run Spring Batch application on Azure App Service](https://github.com/shrivastavarashmi/SampleSpringBatchScheduler/edit/main/README.md#additional-requirement-to-run-spring-batch-application-on-azure-app-service)
   * [Clone and build the repo](https://github.com/shrivastavarashmi/SampleSpringBatchScheduler#clone-and-build-the-repo)
   * [Deploy the application](https://github.com/shrivastavarashmi/SampleSpringBatchScheduler#to-deploy-the-project-on-azure-cloud-shell)
   * [Verify the application](https://github.com/shrivastavarashmi/SampleSpringBatchScheduler#verify-azure-app-service)
@@ -12,7 +13,7 @@ This quickstart shows you how to deploy Spring Boot Batch application on App Ser
 # What will you experience
 You will:
 
-* Build existing Spring Boot Batch application.This repository consists of sample application to showcase a way to deploy Spring Boot Batch application on App Service.
+* Build existing Spring Boot Batch application with additional requirement to run Spring Boot Batch application on App Service.
 * Deploy the application on App Service
 * Verify and monitor the application
 * How application behave with Always On Feature on Azure App Service
@@ -38,6 +39,33 @@ To run the code in this article in Azure Cloud Shell:
 
 * Select Enter to run the code.
 
+# Additional requirement to run Spring Batch application on Azure App Service
+
+Below two extra dependencies are added in the ```pom.xml``` of the existing batch application as App Service requires an http endpoint to be up for the instance to be reported as up and running. This can also be achieved by adding a welcome page or Rest endpoint.
+
+```bash
+  <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+   <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+```
+
+In case a HTTP endpoint is not exposed by the deployed application, App Service deems the instance as not running and keeps restarting it (after a default interval of 600 seconds), since the spring boot batch in itself does not start an HTTP service. You may see recurring logs like below in this case - 
+
+```
+2022-07-21T07:53:37.411Z ERROR - Container aaaaa_0_789d3c0a for site rashbatchapp did not start within expected time limit. Elapsed time = 600.6948109 sec
+
+2022-07-21T07:53:38.642Z ERROR - Container aaaaa_0_789d3c0a didn't respond to HTTP pings on port: 80, failing site start. See container logs for debugging.
+
+2022-07-21T07:53:38.718Z INFO  - Stopping site aaaaa because it failed during startup.
+```
+
+The purpose of spring boot actuator here is to have a HTTP service (health check indicator in this case) exposed on port 80 which will indicate the App Service is up and running.
+
 # Clone and build the repo
 
 * Create a new folder and clone the sample app repository to your Azure Cloud account
@@ -59,19 +87,6 @@ To run the code in this article in Azure Cloud Shell:
    mvn com.microsoft.azure:azure-webapp-maven-plugin:2.5.0:config
   ```  
   
-* Note : Below two extra dependencies are added in the ```pom.xml``` of the batch application as App Service requires an http endpoint to be up for the instance to be reported as up and running. This can also be achieved by adding a welcome page or Rest endpoint.
-
-```bash
-  <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-actuator</artifactId>
-    </dependency>
-   <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-```
-
 * Build the project
  
   ```bash
