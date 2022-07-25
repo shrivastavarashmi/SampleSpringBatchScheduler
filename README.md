@@ -2,12 +2,12 @@
 
 This quickstart shows you how to deploy Spring Boot Batch application on App Service. When you're finished, you can continue to manage the application via the Azure CLI or switch to using the Azure Portal.
 
-* [Deploy Spring Boot apps on Azure App Service](https://github.com/shrivastavarashmi/SampleSpringBatchScheduler#deploy-spring-boot-batch-application-on-azure-function-using-spring-cloud-function)
+* [Deploy Spring Boot apps on Azure App Service](https://github.com/shrivastavarashmi/SampleSpringBatchScheduler#deploy-spring-boot-batch-application-on-azure-app-service)
   * [What will you experience](https://github.com/shrivastavarashmi/SampleSpringBatchScheduler#what-will-you-experience)
   * [What you will need](https://github.com/shrivastavarashmi/SampleSpringBatchScheduler#what-will-you-need)
   * [Clone and build the repo](https://github.com/shrivastavarashmi/SampleSpringBatchScheduler#clone-and-build-the-repo)
-  * [Deploy the application](https://github.com/shrivastavarashmi/SampleSpringBatchScheduler#deploy-the-application-to-azure-functions)
-  * [Verify the application](https://github.com/shrivastavarashmi/SampleSpringBatchScheduler#verify-azure-function)
+  * [Deploy the application](https://github.com/shrivastavarashmi/SampleSpringBatchScheduler#to-deploy-the-project-on-azure-cloud-shell)
+  * [Verify the application](https://github.com/shrivastavarashmi/SampleSpringBatchScheduler#verify-azure-app-service)
  
 # What will you experience
 You will:
@@ -15,7 +15,7 @@ You will:
 * Build existing Spring Boot Batch application.This repository consists of sample application to showcase a way to deploy and Spring Boot Batch application on App Service.
 * Deploy the application on App Service
 * Verify and monitor the application
-* How application behave with AlwaysOn feature kept as ON/OFF
+* How application behave with Always On Feature on Azure App Service
 
 # What will you need
 
@@ -49,7 +49,7 @@ Select Enter to run the code.
 
   `cd SampleSpringBatchScheduler`
 
-* Configure the maven plugin to set up the App Service operating system, Java version, and Tomcat version using below command :
+* Configure the maven plugin to [set up](https://docs.microsoft.com/en-us/azure/app-service/quickstart-java?tabs=javase&pivots=platform-linux-development-environment-maven#3---configure-the-maven-plugin) the App Service operating system, Java version, and Tomcat version using below command :
 
  `mvn com.microsoft.azure:azure-webapp-maven-plugin:2.5.0:config`
 
@@ -69,7 +69,7 @@ Use below command to deploy project on App Service
 
 Below information can be used to verify the application running on App Service :
 
-* Hit the healthcheck url  `https://{appservicename}.azurewebsites.net/actuator/health` to see if your app service is up and running. It should display below json output :
+* Hit the health check url  `https://{appservicename}.azurewebsites.net/actuator/health` to see if your app service is up and running. It should display below json output :
       
  ``{"status":"UP"}``
 
@@ -78,6 +78,15 @@ Below information can be used to verify the application running on App Service :
   ![image](https://user-images.githubusercontent.com/83832052/180320383-573db632-40db-430c-b34f-c72f61fd392f.png)
 
 
-With Always On disabled App Service will not run.
+# Always On Feature on Azure App Service
+With Always On disabled App Service will not run. If it is not already On , it can be done as per below instruction :
+
+In the Azure portal, go to your web app.
+* Select Configuration.
+* Select General settings.
+* For Always On, select On.
+
+![image](https://user-images.githubusercontent.com/83832052/180438016-4250575a-7499-42f5-bb31-8ef529dda557.png)
+
 # Reference Links
 * [Create a Java app on Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/quickstart-java?tabs=javase&pivots=platform-linux-development-environment-maven)
